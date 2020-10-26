@@ -1,0 +1,12 @@
+html{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10%;
+    background-color: #223a4d;
+}
+
+#canvas{
+    background-color: white;
+}
+
