@@ -3,21 +3,25 @@ class InputHandler {
         document.addEventListener('keydown', e => {
             switch(e.keyCode){
                 case 37:
-                    surfer.speedX--
+                    surfer.speedX--;
+                    surfer.direction = 'left'; 
                 break;
 
                 case 38:
                     if(surfer.position.y + surfer.height > 310 ){
-                        surfer.speedY--
+                        surfer.speedY--;
+                        surfer.direction = 'up';
                     }
                 break;
 
                 case 39:
-                    surfer.speedX++
+                    surfer.speedX++;
+                    surfer.direction = 'right';
                 break;
 
                 case 40:
-                    surfer.speedY++
+                    surfer.speedY++;
+                    surfer.direction = 'down'
                 break;
 
                 case 32:

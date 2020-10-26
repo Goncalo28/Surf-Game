@@ -69,21 +69,14 @@ function updateGame(){
             currentGame.gameIsRunning = false;
         }
     })
-    
-
-    // ctx.beginPath();
-    // ctx.moveTo(0, 310);
-    // ctx.lineTo(gameWidth, 310);
-    // ctx.stroke();
-
-    // ctx.beginPath();
-    // ctx.moveTo(0, 510);
-    // ctx.lineTo(gameWidth, 510);
-    // ctx.stroke();
-
-    
+        
     if(currentGame.gameIsRunning){
         requestAnimationFrame(updateGame);
+    } else {
+        ctx.font = "60px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", gameWidth/2, 150);
     }
 }
 

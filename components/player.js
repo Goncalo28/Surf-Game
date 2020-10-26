@@ -1,22 +1,40 @@
-const surferRegStance = new Image()
-surferRegStance.src = 'assets/surfer-stance1.png'
+// const surferRegStance = new Image()
+// surferRegStance.src = 'assets/surfer-stance1.png'
 
 class Player {
     constructor(gameWidth, gameHeight){
         this.width = 65;
         this.height = 75;
-        this.image = surferRegStance;
+        // this.image = surferRegStance;
         this.speedX = 1;
         this.speedY = 1;
+        this.direction = 'down'
         this.position = {
             x: gameWidth / 2 - this.width - 300,
             y: gameHeight / 2 - this.height / 2 + 110
         };
         this.jumped = false;
+        const imagePaths = {
+            left: '/assets/surfer-left.png',
+            up: '/assets/surfer-up.png',
+            right: '/assets/surfer-right.png',
+            down: '/assets/surfer-down.png'
+        };
+      
+        // Save all the images in the character
+        this.images = {};
+      
+        // Loop keys of object
+        for (let direction in imagePaths) {
+            this.images[direction] = new Image();
+            this.images[direction].src = imagePaths[direction];
+        }
+        
     }
 
     draw(ctx){
-        ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        // ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        ctx.drawImage(this.images[this.direction], this.position.x, this.position.y, this.width, this.height);
     }
 
     update(){
@@ -47,7 +65,7 @@ class Player {
     }
 
     moveUp(){
-        this.position.y -= this.speedY;
+        this.position.x += this.speedY--;
     }
 
     moveDown(){
@@ -65,11 +83,4 @@ class Player {
     jump(){
         this.position.y -= this.speedY;
     }
-
-    // hit(obstacle){
-    //     return !(this.position.y + obstacle.height < obstacle.position.y || 
-    //     this.position.y > obstacle.position.y + obstacle.height || 
-    //     this.position.x + obstacle.width < obstacle.position.x || 
-    //     this.position.x > obstacle.position.x + obstacle.width)
-    // }
 }
