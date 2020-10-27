@@ -3,11 +3,10 @@ wave.src = 'assets/wave.png';
 
 class Game {
     constructor(){
-        //need to add bacground image afterwards
         this.image = wave;
         this.surfer = {},
         this.obstacles = [];
-        //this.points = 0;
+        this.points = 0;
         this.gameIsRunning = true;
     }
     draw(){

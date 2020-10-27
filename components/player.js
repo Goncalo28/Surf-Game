@@ -65,22 +65,41 @@ class Player {
     }
 
     moveUp(){
-        this.position.x += this.speedY--;
+        // this.position.x += this.speedY--;
+        if(this.position.y + this.height > 310 ){
+            this.speedY--;
+            this.direction = 'up';
+        }
     }
 
     moveDown(){
-        this.position.y += this.speedY;
+        // this.position.y += this.speedY;
+        this.speedY++;
+        this.direction = 'down'
     }
 
     moveRight(){
-        this.position.x += this.speedX;
+        // this.position.x += this.speedX;
+        this.speedX++;
+        this.direction = 'right';
     }
 
     moveLeft(){
-        this.position.x -= this.speedX;
+        // this.position.x -= this.speedX;
+        this.speedX--;
+        this.direction = 'left'; 
     }
 
     jump(){
-        this.position.y -= this.speedY;
+        // this.position.y -= this.speedY;
+        if(!this.jumped){
+            if(this.position.y + this.height <= 310){
+                this.jumped = !this.jumped;
+                this.speedY -= 0.5;
+                this.speedX += 1;
+                this.position.y -= this.speedY;
+                this.position.x += this.speedX;
+            }
+            }
     }
 }

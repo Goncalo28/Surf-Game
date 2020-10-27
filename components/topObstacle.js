@@ -5,7 +5,7 @@ class TopObstacle {
         this.width = 50;
         this.height = 30;
         this.image = seagull;
-        this.speedX = 2;
+        this.speedX = 3;
         this.position = {
             x: gameWidth - this.width,
             y: 200

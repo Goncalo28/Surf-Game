@@ -6,6 +6,7 @@ class WaveObstacle extends TopObstacle{
         this.image = rock;
         this.width = 70;
         this.height = height;
+        this.speedX = 2;
         this.position.y = 550 - this.height
     } 
     draw(ctx){

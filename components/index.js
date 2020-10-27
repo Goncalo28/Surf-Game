@@ -7,6 +7,8 @@ const gameHeight = canvas.height;
 
 let currentGame = new Game();
 
+let foamObstacle = new FoamObstacle(280);
+
 let surfer = new Player(gameWidth, gameHeight);
 new InputHandler(surfer);
 
@@ -34,6 +36,16 @@ function updateWaveObstacleArr(){
     }
 }
 
+let sharkObstacleArr = [];
+let sharkFrequecy = 0;
+function updatesharkObstacleArr(){
+    sharkFrequecy++;
+    if(sharkFrequecy % 500 === 0 ){
+        let newGameWitdh = Math.floor(Math.random() * 300) + gameWidth;
+        sharkObstacleArr.push(new SharkObstacle(newGameWitdh));
+    }
+}
+
 
 function detectCollision(obstacle) {
     return !((surfer.position.y + surfer.height < obstacle.position.y) || 
@@ -41,7 +53,6 @@ function detectCollision(obstacle) {
             (surfer.position.x + surfer.width < obstacle.position.x) || 
             (surfer.position.x > obstacle.position.x + obstacle.width))
 }
-
 
 function updateGame(){
 
@@ -51,7 +62,8 @@ function updateGame(){
     surfer.update();
     updateTopObstacleArr();
     updateWaveObstacleArr();
-
+    updatesharkObstacleArr();
+    foamObstacle.draw(ctx)
     //to check if surfer hit top obstacle
     topObstacleArr.forEach(obstacle => {
         obstacle.draw(ctx);
@@ -63,6 +75,15 @@ function updateGame(){
 
     //to check if surfer hit bottom obstacle
     waveObstacleArr.forEach(obstacle => {
+        obstacle.draw(ctx);
+        obstacle.update();
+        if (detectCollision(obstacle)) {
+            currentGame.gameIsRunning = false;
+        }
+    })
+    
+    //to check if surfer hit shark obstacle
+    sharkObstacleArr.forEach(obstacle => {
         obstacle.draw(ctx);
         obstacle.update();
         if (detectCollision(obstacle)) {
