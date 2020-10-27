@@ -1,5 +1,5 @@
 const seagull = new Image();
-seagull.src = 'assets/seagull.png'
+seagull.src = './assets/seagull.png'
 class TopObstacle {
     constructor(gameWidth){
         this.width = 50;

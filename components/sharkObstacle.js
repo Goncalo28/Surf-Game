@@ -1,5 +1,5 @@
 const sharkImage = new Image();
-sharkImage.src = 'assets/shark.png';
+sharkImage.src = './assets/shark.png';
 
 class SharkObstacle extends TopObstacle{
     constructor(gameWidth){

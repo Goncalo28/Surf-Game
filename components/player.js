@@ -15,10 +15,10 @@ class Player {
         };
         this.jumped = false;
         const imagePaths = {
-            left: '/assets/surfer-left.png',
-            up: '/assets/surfer-up.png',
-            right: '/assets/surfer-right.png',
-            down: '/assets/surfer-down.png'
+            left: './assets/surfer-left.png',
+            up: './assets/surfer-up.png',
+            right: './assets/surfer-right.png',
+            down: './assets/surfer-down.png'
         };
       
         // Save all the images in the character

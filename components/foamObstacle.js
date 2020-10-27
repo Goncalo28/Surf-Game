@@ -1,5 +1,5 @@
 const foam = new Image();
-foam.src = 'assets/foam.png';
+foam.src = './assets/foam.png';
 class FoamObstacle{
     constructor(width){
         this.image = foam;

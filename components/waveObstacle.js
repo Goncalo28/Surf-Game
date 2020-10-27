@@ -1,5 +1,5 @@
 const rock = new Image();
-rock.src = 'assets/rock.png'
+rock.src = './assets/rock.png'
 class WaveObstacle extends TopObstacle{
     constructor(gameWidth, height){
         super(gameWidth)
