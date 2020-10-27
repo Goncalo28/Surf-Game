@@ -1,12 +1,13 @@
 const wave = new Image();
 wave.src = 'assets/wave.png';
 
+
+
 class Game {
     constructor(){
         this.image = wave;
         this.surfer = {},
-        this.obstacles = [];
-        this.points = 0;
+        this.score = 0;
         this.gameIsRunning = true;
     }
     draw(){

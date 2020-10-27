@@ -1,12 +1,60 @@
-html{
+body {
+    padding: 0;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    /* flex-direction: row; */
+}
+  
+.game-intro {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 10%;
-    background-color: #223a4d;
+    flex-direction: column;
+    padding-top: 2em;
+}
+  
+.game-intro p {
+    font-size: 18px;
 }
 
-#canvas{
-    background-color: white;
+#score{
+    color: #ff7535;
+    font-size: 25px;
 }
+  
+img{
+    width: 30%;
+    height: 45%;
+    padding-bottom: 2em;
+}
+
+.space-key{
+    width: 10%;
+    height: 10%;
+    border: 1px;
+    border-radius: 5px;
+}
+body button {
+    font-size: 30px;
+    background-color: #5098d3;
+    color: #fff;
+    padding: 20px 40px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#game-info{
+    text-align: center;
+}
+
+#game-board{
+    padding-left: 2em;
+    padding-top: 2em;
+}
+  
+
+
 

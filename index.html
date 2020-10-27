@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SurfDude</title>
+    <title>SurfGame</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-    <canvas id="canvas" height="600" width="900"></canvas>
+    <div class="game-intro">
+        <h1 id="surfGame">Surf Game</h1>
+        <!-- <img src="assets/game-image.png" alt="game-image"> -->
+        <button id="start-button">Click to Surf</button>
+        <!-- <button id="restart-button">Surf again</button> -->
+        <div id="score-div">
+          <p id="score">Score: <span id="score-value"> 0 </span></p>
+        </div>
+        <div id="game-info">
+            <h2>Info</h2>
+            <div id="move-info">
+                <p>Move your surfer using the arrow keys:</p>
+                <img src="assets/keyboard-keys.png" alt="arrow-keys">
+                <br>
+                <p>Press the space bar to jump, if surfer is going over the wave.</p>
+                <img class='space-key' src="assets/space-key.png" alt="">
+            </div>
+        </div>
+      </div>
+    <div id="game-board">
+        <canvas id="canvas" height="600" width="900"></canvas>
+    </div>
     <script src="components/player.js"></script>
     <script src="components/topObstacle.js"></script>
     <script src="components/waveObstacle.js"></script>

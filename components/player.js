@@ -61,7 +61,6 @@ class Player {
         if(this.position.y > 310){
             this.jumped = false;
         }
-
     }
 
     moveUp(){
@@ -100,6 +99,6 @@ class Player {
                 this.position.y -= this.speedY;
                 this.position.x += this.speedX;
             }
-            }
+        }
     }
 }
