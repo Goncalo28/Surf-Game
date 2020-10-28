@@ -5,7 +5,14 @@ body {
     display: flex;
     /* flex-direction: row; */
 }
-  
+
+#game-image{
+    position: absolute;
+    margin-left: 40em;
+    width: 43em;
+    height: 28em;
+}
+
 .game-intro {
     display: flex;
     align-items: center;
@@ -36,10 +43,10 @@ img{
     border-radius: 5px;
 }
 body button {
-    font-size: 30px;
+    font-size: 20px;
     background-color: #5098d3;
     color: #fff;
-    padding: 20px 40px;
+    padding: 20px 30px;
     border: 0;
     box-shadow: 0;
     border-radius: 5px;

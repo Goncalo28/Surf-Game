@@ -4,19 +4,37 @@ document.getElementById('high-score').style.display = 'none';
 
 let surfer;
 let currentGame;
-let foamObstacle = new FoamObstacle(280);
 let difficulty;
+let foamObstacle = new FoamObstacle(280);
 
-document.getElementById('start-button').onclick = () => {
+
+document.getElementById('easy-start-button').onclick = () => {
     document.getElementById('game-board').style.display = 'block';
     document.getElementById('score-div').style.display = 'block';
     document.getElementById('high-score').style.display = 'block';
+    document.getElementById('game-image').style.display = 'none';
 
-    startGame();
+    startGame(1);
+}
+document.getElementById('medium-start-button').onclick = () => {
+    document.getElementById('game-board').style.display = 'block';
+    document.getElementById('score-div').style.display = 'block';
+    document.getElementById('high-score').style.display = 'block';
+    document.getElementById('game-image').style.display = 'none';
+
+    startGame(2);
+}
+document.getElementById('hard-start-button').onclick = () => {
+    document.getElementById('game-board').style.display = 'block';
+    document.getElementById('score-div').style.display = 'block';
+    document.getElementById('high-score').style.display = 'block';
+    document.getElementById('game-image').style.display = 'none';
+
+    startGame(3);
 }
 
-function startGame() {
-    currentGame = new Game();
+function startGame(difficulty) {
+    currentGame = new Game(difficulty);
     surfer = new Player(gameWidth, gameHeight);
     new InputHandler(surfer);
     checkHighScore();
@@ -34,7 +52,7 @@ let twoTimesFrequency = 0;
 
 function updateTwoTimesArr(){
     twoTimesFrequency++;
-    if(twoTimesFrequency % 3000 === 0){
+    if(twoTimesFrequency % 1200 === 0){
         twoTimesArr.push(new ScoreTwice(gameWidth));
     }
 }
@@ -45,7 +63,7 @@ let obstaclesFrequency = 0;
 
 function updateTopObstacleArr(){
     obstaclesFrequency++;
-    if(obstaclesFrequency % 320 === 0 ){
+    if(obstaclesFrequency % Math.floor(320/currentGame.difficulty) === 0 ){
         let newGameWitdh = Math.floor(Math.random() * 300) + gameWidth;
         let randomY = Math.floor(Math.random() * 300);
         topObstacleArr.push(new TopObstacle(newGameWitdh, randomY));
@@ -58,9 +76,9 @@ let frames = 0;
 
 function updateWaveObstacleArr(){
     frames ++
-    if(frames % 250 === 0 ){
+    if(frames % Math.floor(250/currentGame.difficulty) === 0 ){
         let newGameWitdh = Math.floor(Math.random() * 350) + gameWidth;
-        let randomHeight = Math.floor(Math.random() * 250);
+        let randomHeight = Math.floor(Math.random() * 160);
         waveObstacleArr.push(new WaveObstacle(newGameWitdh, randomHeight));
     }
 }
@@ -70,7 +88,7 @@ let sharkFrequecy = 0;
 
 function updatesharkObstacleArr(){
     sharkFrequecy ++
-    if(sharkFrequecy % 500 === 0 ){
+    if(sharkFrequecy % Math.floor(500/currentGame.difficulty) === 0 ){
         let newGameWitdh = Math.floor(Math.random() * 300) + gameWidth;
         sharkObstacleArr.push(new SharkObstacle(newGameWitdh));
     }
@@ -108,7 +126,7 @@ function updateGame(){
         powerUp.update();
 
         if (detectCollision(powerUp)) {
-            currentGame.score *= 2
+            currentGame.score *= 2;
             twoTimesArr = [];
         }
     });
@@ -154,24 +172,29 @@ function updateGame(){
     document.getElementById('score-value').innerHTML = currentGame.score ++; 
 
     // more obstacles if score is over X
-    if(currentGame.score > 3000){
+    // if(currentGame.score > 1500){
+    //     increaseObstacles();
+    // }
+    if (currentGame.score > 6000){
         increaseObstacles();
-    } else if (currentGame.score > 9000){
+    }
+    if (currentGame.score > 18000){
         increaseObstacles();
-    } else if (currentGame.score > 18000){
+    } 
+    if (currentGame.score > 36000){
         increaseObstacles();
-    } else if (currentGame.score > 36000){
+    }
+    if (currentGame.score > 72000){
         increaseObstacles();
-    } else if (currentGame.score > 72000){
-        increaseObstacles();
-    } else if (currentGame.score > 144000){
+    } 
+    if (currentGame.score > 144000){
         increaseObstacles();
     }
    
     //check if game is running if not show game over screen and try again button
     if(currentGame.gameIsRunning){
         requestAnimationFrame(updateGame);
-        document.getElementById('start-button').style.display = 'none';
+        document.getElementById('difficulty-buttons').style.display = 'none';
 
     } else {
         ctx.beginPath();
@@ -183,8 +206,8 @@ function updateGame(){
         ctx.textAlign = "center";
         ctx.fillText("GAME OVER", gameWidth/2, gameHeight/2);
 
-        document.getElementById('start-button').style.display = 'block';
-        document.getElementById('start-button').innerText = 'Try Again';
+        
+        document.getElementById('difficulty-buttons').style.display = 'block';
     }
 }
 
@@ -206,4 +229,5 @@ function restartGame(){
     topObstacleArr = [];
     waveObstacleArr = [];
     sharkObstacleArr = [];
+    twoTimesFrequency = 0;
 }
