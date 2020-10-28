@@ -174,7 +174,7 @@ function updateGame(){
     // more obstacles if score is over X
     // if(currentGame.score > 1500){
     //     increaseObstacles();
-    // }
+    // }gi
     if (currentGame.score > 6000){
         increaseObstacles();
     }
