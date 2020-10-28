@@ -1,5 +1,5 @@
 const twoTimesImage = new Image();
-twoTimesImage.src = '/assets/2x.png';
+twoTimesImage.src = './assets/2x.png';
 
 class ScoreTwice{
     constructor(gameWidth){

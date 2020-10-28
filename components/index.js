@@ -1,5 +1,6 @@
 document.getElementById('game-board').style.display = 'none';
 document.getElementById('score-div').style.display = 'none';
+document.getElementById('high-score').style.display = 'none';
 
 let surfer;
 let currentGame;
@@ -9,6 +10,7 @@ let difficulty;
 document.getElementById('start-button').onclick = () => {
     document.getElementById('game-board').style.display = 'block';
     document.getElementById('score-div').style.display = 'block';
+    document.getElementById('high-score').style.display = 'block';
 
     startGame();
 }
@@ -17,6 +19,7 @@ function startGame() {
     currentGame = new Game();
     surfer = new Player(gameWidth, gameHeight);
     new InputHandler(surfer);
+    checkHighScore();
     updateGame();
 }
 
@@ -25,7 +28,6 @@ const ctx = canvas.getContext('2d');
 
 const gameWidth = canvas.width;
 const gameHeight = canvas.height; 
-
 
 let twoTimesArr = [];
 let twoTimesFrequency = 0;
@@ -99,6 +101,7 @@ function updateGame(){
     updateTwoTimesArr();
     foamObstacle.draw(ctx);    
 
+    //check if surfer hit 2x power up
     twoTimesArr.forEach(powerUp => {
 
         powerUp.draw(ctx);
@@ -150,7 +153,7 @@ function updateGame(){
     //add score
     document.getElementById('score-value').innerHTML = currentGame.score ++; 
 
-    // more obstacles if over X score
+    // more obstacles if score is over X
     if(currentGame.score > 3000){
         increaseObstacles();
     } else if (currentGame.score > 9000){
@@ -165,6 +168,7 @@ function updateGame(){
         increaseObstacles();
     }
    
+    //check if game is running if not show game over screen and try again button
     if(currentGame.gameIsRunning){
         requestAnimationFrame(updateGame);
         document.getElementById('start-button').style.display = 'none';
@@ -199,7 +203,6 @@ function checkHighScore(){
 function restartGame(){
     checkHighScore();
     currentGame.surfer = {};
-    currentGame.score = 0;
     topObstacleArr = [];
     waveObstacleArr = [];
     sharkObstacleArr = [];
