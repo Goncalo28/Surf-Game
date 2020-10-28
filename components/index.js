@@ -13,15 +13,6 @@ document.getElementById('start-button').onclick = () => {
     startGame();
 }
 
-// document.getElementById('medium-start-button').onclick = () => {
-//     document.getElementById('game-board').style.display = 'block';
-//     document.getElementById('score-div').style.display = 'block';
-
-//     difficulty = 100;
-
-//     startGame();
-// }
-
 function startGame() {
     currentGame = new Game();
     surfer = new Player(gameWidth, gameHeight);
@@ -108,19 +99,16 @@ function updateGame(){
     updateTwoTimesArr();
     foamObstacle.draw(ctx);    
 
-    twoTimesArr.forEach(obstacle => {
+    twoTimesArr.forEach(powerUp => {
 
-        obstacle.draw(ctx);
-        obstacle.update();
+        powerUp.draw(ctx);
+        powerUp.update();
 
-        if (detectCollision(obstacle)) {
+        if (detectCollision(powerUp)) {
             currentGame.score *= 2
             twoTimesArr = [];
         }
     });
-
-
-
 
     // to check if surfer hit top obstacle
     topObstacleArr.forEach(obstacle => {
