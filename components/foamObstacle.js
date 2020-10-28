@@ -5,7 +5,6 @@ class FoamObstacle{
         this.image = foam;
         this.width = width;
         this.height = 250;
-        // this.speedX = 2;
         this.position = {
             x: width - this.width,
             y: 520 - this.height

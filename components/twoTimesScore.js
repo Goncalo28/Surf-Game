@@ -1,14 +1,15 @@
-const seagull = new Image();
-seagull.src = './assets/seagull.png'
-class TopObstacle {
-    constructor(gameWidth, y){
-        this.width = 50;
+const twoTimesImage = new Image();
+twoTimesImage.src = '/assets/2x.png';
+
+class ScoreTwice{
+    constructor(gameWidth){
+        this.width = 30;
         this.height = 30;
-        this.image = seagull;
-        this.speedX = 3;
+        this.image = twoTimesImage;
+        this.speedX = 1;
         this.position = {
             x: gameWidth - this.width,
-            y: y
+            y: 30
         };
     }
 

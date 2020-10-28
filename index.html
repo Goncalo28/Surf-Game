@@ -12,18 +12,25 @@
         <h1 id="surfGame">Surf Game</h1>
         <!-- <img src="assets/game-image.png" alt="game-image"> -->
         <button id="start-button">Click to Surf</button>
-        <!-- <button id="restart-button">Surf again</button> -->
+        <div>
+            <!-- <button id="easy-start-button">Easy</button> -->
+            <button id="medium-start-button">Medium</button>
+            <!-- <button id="hard-start-button">Hard</button> -->
+        </div>
         <div id="score-div">
           <p id="score">Score: <span id="score-value"> 0 </span></p>
+        </div>
+        <div>
+            <p id="high-score">High score: <span id="high-score-value"> 0 </span></p>
         </div>
         <div id="game-info">
             <h2>Info</h2>
             <div id="move-info">
                 <p>Move your surfer using the arrow keys:</p>
-                <img src="assets/keyboard-keys.png" alt="arrow-keys">
+                <img src="/assets/keyboard-keys.png" alt="arrow-keys">
                 <br>
-                <p>Press the space bar to jump, if surfer is going over the wave.</p>
-                <img class='space-key' src="assets/space-key.png" alt="">
+                <!-- <p>Press the space bar to jump, if surfer is going over the wave.</p>
+                <img class='space-key' src="assets/space-key.png" alt=""> -->
             </div>
         </div>
       </div>
@@ -35,6 +42,7 @@
     <script src="components/waveObstacle.js"></script>
     <script src="components/sharkObstacle.js"></script>
     <script src="components/foamObstacle.js"></script>
+    <script src="components/twoTimesScore.js"></script>
     <script src="components/inputs.js"></script>
     <script src="components/game.js"></script>
     <script src="components/index.js"></script>
