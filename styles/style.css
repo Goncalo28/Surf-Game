@@ -3,14 +3,16 @@ body {
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
-    /* flex-direction: row; */
+    flex-direction: row;
+    padding-left: 5em;
 }
 
 #game-image{
     position: absolute;
-    margin-left: 40em;
+    margin-left: 43em;
     width: 43em;
     height: 28em;
+    padding-top: 5em;
 }
 
 .game-intro {
@@ -18,7 +20,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 2em;
+    padding-top: 1em;
 }
   
 .game-intro p {
@@ -33,7 +35,7 @@ body {
 img{
     width: 30%;
     height: 45%;
-    padding-bottom: 2em;
+    padding-top: 1em;
 }
 
 .space-key{
@@ -61,7 +63,13 @@ body button {
     padding-left: 2em;
     padding-top: 2em;
 }
-  
-
-
-
+#obstacles-powerups{
+    padding-top: 1em;
+    width: 30em;
+    height: 10em;
+    display: flex;
+    justify-content: left;
+}
+li{
+    list-style: none;
+}

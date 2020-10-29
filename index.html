@@ -12,7 +12,7 @@
         <h1 id="surfGame">Surf Game</h1>
         <img id="game-image" src="assets/game-image.png" alt="game-image">
         <!-- <button id="start-button">Click to Surf</button> -->
-        <p>Choose a difficulty:</p>
+        <p id="difficulty">Choose a difficulty:</p>
         <div id="difficulty-buttons">
             <button id="easy-start-button">Easy</button>
             <button id="medium-start-button">Medium</button>
@@ -29,9 +29,25 @@
             <div id="move-info">
                 <p>Move your surfer using the arrow keys:</p>
                 <img src="assets/keyboard-keys.png" alt="arrow-keys">
-                <br>
-                <!-- <p>Press the space bar to jump, if surfer is going over the wave.</p>
-                <img class='space-key' src="assets/space-key.png" alt=""> -->
+            </div>
+            <div id="obstacles-powerups">
+                <div>
+                    <p><strong>Obstacles:</strong></p>
+                    <ul>
+                        <li><img src="/assets/seagull.png" alt=""></li>
+                        <li><img src="/assets/shark.png" alt=""></li>
+                        <li><img src="/assets/rock.png" alt=""></li>                    
+                    </ul>
+                </div>
+                <div>
+                    <p><strong>PowerUps:</strong></p>
+                    <ul>
+                        <li><img src="/assets/2x.png" alt=""></li>
+                        <p class="powerups-p" style="font-size: 15px;">Double your score</p>
+                        <li><img src="/assets/shield.png" alt=""></li>
+                        <p class="powerups-p" style="font-size: 15px;">No obstacles for<br>a short period of time</p>
+                    </ul>
+                </div>
             </div>
         </div>
       </div>
@@ -44,6 +60,7 @@
     <script src="components/sharkObstacle.js"></script>
     <script src="components/foamObstacle.js"></script>
     <script src="components/twoTimesScore.js"></script>
+    <script src="components/shield.js"></script>
     <script src="components/inputs.js"></script>
     <script src="components/game.js"></script>
     <script src="components/index.js"></script>

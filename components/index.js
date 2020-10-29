@@ -47,12 +47,24 @@ const ctx = canvas.getContext('2d');
 const gameWidth = canvas.width;
 const gameHeight = canvas.height; 
 
+
+let shieldsArr = [];
+let shieldsFrequency = 0;
+function updateShieldsArr(){
+    shieldsFrequency++;
+    if(shieldsFrequency % 1800 === 0){
+        let randomY = Math.floor(Math.random() * 450);
+        shieldsArr.push(new Shield(gameWidth, randomY));
+    }
+}
+
+
 let twoTimesArr = [];
 let twoTimesFrequency = 0;
 
 function updateTwoTimesArr(){
     twoTimesFrequency++;
-    if(twoTimesFrequency % 1200 === 0){
+    if(twoTimesFrequency % 1500 === 0){
         twoTimesArr.push(new ScoreTwice(gameWidth));
     }
 }
@@ -113,11 +125,27 @@ function updateGame(){
     currentGame.draw();
     surfer.draw(ctx);
     surfer.update();
-    updateTopObstacleArr();
-    updateWaveObstacleArr();
-    updatesharkObstacleArr();
+    increaseObstacles();
     updateTwoTimesArr();
-    foamObstacle.draw(ctx);    
+    updateShieldsArr();
+    foamObstacle.draw(ctx);   
+    
+    //check if surfer hit shield power up
+    shieldsArr.forEach(powerUp => {
+
+        powerUp.draw(ctx);
+        powerUp.update();
+
+        if (detectCollision(powerUp)) {
+            obstaclesFrequency = 0
+            frames = 0
+            sharkFrequecy = 0
+            shieldsArr = [];
+            topObstacleArr = [];
+            waveObstacleArr = [];
+            sharkObstacleArr = [];
+        }
+    });
 
     //check if surfer hit 2x power up
     twoTimesArr.forEach(powerUp => {
@@ -153,7 +181,7 @@ function updateGame(){
             currentGame.gameIsRunning = false;
             restartGame();
         }
-    })
+    });
     
     // to check if surfer hit shark obstacle
     sharkObstacleArr.forEach(obstacle => {
@@ -165,36 +193,39 @@ function updateGame(){
             currentGame.gameIsRunning = false;
             restartGame();
         }
-    })
+    });
 
 
     //add score
     document.getElementById('score-value').innerHTML = currentGame.score ++; 
 
     // more obstacles if score is over X
-    // if(currentGame.score > 1500){
-    //     increaseObstacles();
-    // }gi
     if (currentGame.score > 6000){
         increaseObstacles();
-    }
+        updateShieldsArr();
+    };
     if (currentGame.score > 18000){
         increaseObstacles();
-    } 
+        updateShieldsArr();
+    };
     if (currentGame.score > 36000){
         increaseObstacles();
+        updateShieldsArr();
     }
     if (currentGame.score > 72000){
         increaseObstacles();
-    } 
+        updateShieldsArr();
+    };
     if (currentGame.score > 144000){
         increaseObstacles();
-    }
+        updateShieldsArr();
+    };
    
     //check if game is running if not show game over screen and try again button
     if(currentGame.gameIsRunning){
         requestAnimationFrame(updateGame);
         document.getElementById('difficulty-buttons').style.display = 'none';
+        document.getElementById('difficulty').style.display = 'none';
 
     } else {
         ctx.beginPath();
@@ -208,16 +239,18 @@ function updateGame(){
 
         
         document.getElementById('difficulty-buttons').style.display = 'block';
-    }
+        document.getElementById('difficulty').style.display = 'block';
+
+    };
 }
 
 function checkHighScore(){
-    let currentScore = currentGame.score
+    let currentScore = currentGame.score;
 
-    let highScore = localStorage.getItem('HighScore')
+    let highScore = localStorage.getItem('HighScore');
 
     if(currentScore > highScore){
-        localStorage.HighScore = currentScore
+        localStorage.HighScore = currentScore;
     }
     
     document.getElementById("high-score-value").innerHTML = localStorage.getItem("HighScore");
@@ -230,4 +263,7 @@ function restartGame(){
     waveObstacleArr = [];
     sharkObstacleArr = [];
     twoTimesFrequency = 0;
+    twoTimesArr = [];
+    shieldsFrequency = 0;
+    shieldsArr = [];
 }
