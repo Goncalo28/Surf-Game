@@ -4,7 +4,7 @@ body {
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     flex-direction: row;
-    padding-left: 5em;
+    padding-left: 1em;
 }
 
 #game-image{
@@ -60,8 +60,8 @@ body button {
 }
 
 #game-board{
-    padding-left: 2em;
-    padding-top: 2em;
+    padding-left: 1em;
+    padding-top: 1em;
 }
 #obstacles-powerups{
     padding-top: 1em;

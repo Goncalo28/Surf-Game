@@ -6,7 +6,8 @@ let surfer;
 let currentGame;
 let difficulty;
 let foamObstacle = new FoamObstacle(280);
-
+let audio = new Audio('./assets/powerup.wav');
+let gameOverAudio = new Audio('./assets/gameover.wav');
 
 document.getElementById('easy-start-button').onclick = () => {
     document.getElementById('game-board').style.display = 'block';
@@ -120,7 +121,6 @@ function increaseObstacles(){
 }
 
 function updateGame(){
-
     ctx.clearRect(0, 0, gameWidth, gameHeight);
     currentGame.draw();
     surfer.draw(ctx);
@@ -137,6 +137,7 @@ function updateGame(){
         powerUp.update();
 
         if (detectCollision(powerUp)) {
+            audio.play();
             obstaclesFrequency = 0
             frames = 0
             sharkFrequecy = 0
@@ -154,6 +155,8 @@ function updateGame(){
         powerUp.update();
 
         if (detectCollision(powerUp)) {
+            audio.play();
+
             currentGame.score *= 2;
             twoTimesArr = [];
         }
@@ -240,6 +243,8 @@ function updateGame(){
         
         document.getElementById('difficulty-buttons').style.display = 'block';
         document.getElementById('difficulty').style.display = 'block';
+
+        gameOverAudio.play();
 
     };
 }
