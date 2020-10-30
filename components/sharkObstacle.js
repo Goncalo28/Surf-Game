@@ -7,7 +7,7 @@ class SharkObstacle extends TopObstacle{
         this.image = sharkImage;
         this.width = 130;
         this.height = 70;
-        this.speedX = 5;
+        this.speedX = 4;
         this.position.y = 420 - this.height;
     }
     draw(ctx){
